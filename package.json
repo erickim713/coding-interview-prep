@@ -1,0 +1,20 @@
+{
+  "name": "coding-interview-prep",
+  "version": "1.0.0",
+  "description": "coding-interview-prep",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/erickim713/coding-interview-prep.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/erickim713/coding-interview-prep/issues"
+  },
+  "homepage": "https://github.com/erickim713/coding-interview-prep#readme"
+}
