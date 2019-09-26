@@ -10,6 +10,7 @@ class ArrayList {
     const content = this.arrayList[index];
     if(content === undefined) throw new Error('undefined');
   }
+  
   // access (index)
   public access(index: number): any {
     this.checkExistence(index);
