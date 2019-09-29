@@ -4,7 +4,7 @@
   "description": "coding-interview-prep",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha -r ts-node/register src/**/*.spec.ts" ,
     "build": "tsc",
     "wbuild": "tsc --watch"
   },
@@ -18,5 +18,15 @@
   "bugs": {
     "url": "https://github.com/erickim713/coding-interview-prep/issues"
   },
-  "homepage": "https://github.com/erickim713/coding-interview-prep#readme"
+  "homepage": "https://github.com/erickim713/coding-interview-prep#readme",
+  "devDependencies": {
+    "@types/chai": "^4.2.3",
+    "@types/mocha": "^5.2.7",
+    "chai": "^4.2.0",
+    "mocha": "^6.2.0",
+    "ts-node": "^8.4.1"
+  },
+  "dependencies": {
+    "typescript": "^3.6.3"
+  }
 }

@@ -1,8 +1,8 @@
-class ArrayList {
+export class ArrayList {
   arrayList: Array<any>;
-    
 
-  constructor(length: number) {
+
+  constructor(length?: number) {
     this.arrayList = length === undefined ? new Array() : new Array(length);
   }
 
@@ -10,9 +10,9 @@ class ArrayList {
     const content = this.arrayList[index];
     if(content === undefined) throw new Error('undefined');
   }
-  
+
   // access (index)
-  public access(index: number): any {
+  public lookUp(index: number): any {
     this.checkExistence(index);
     return this.arrayList[index];
   }
@@ -24,13 +24,13 @@ class ArrayList {
   }
 
   // remove (index)
-  public remove(index: number): void {
+  public delete(index: number): void {
     this.checkExistence(index);
     this.arrayList.splice(index, 1);
   }
 
   // add (content)
-  public add(content: any): void {
+  public append(content: any): void {
     this.arrayList.push(content);
 
   }
@@ -38,6 +38,10 @@ class ArrayList {
   // insert (index)
   public insert(index: number, content: any) {
     if (this.arrayList.length < index) throw new Error('undefined'); // inserting element in the beginning and at the end is fine but not at nowhere
-    this.arrayList.splice(index, 0, content);    
+    this.arrayList.splice(index, 0, content);
+  }
+
+  public size(): number{
+    return this.arrayList.length;
   }
 }
