@@ -4,7 +4,7 @@
   "description": "coding-interview-prep",
   "main": "index.js",
   "scripts": {
-    "test": "mocha -r ts-node/register src/**/*.spec.ts" ,
+    "test": "mocha -r ts-node/register src/**/*.spec.ts --check-leaks" ,
     "build": "tsc",
     "wbuild": "tsc --watch"
   },
