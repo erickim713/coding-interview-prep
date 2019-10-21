@@ -1,12 +1,4 @@
-class ListNode {
-	public val: number;
-	public next: ListNode;
-	constructor(value: number) {
-		this.val = value;
-		this.next = null;
-	}
-
-}
+import { ListNode } from "../../../data-structure/linked-list/listnode";
 
 const hasCycle = (head: ListNode) => {
 	const record = new Map<number, boolean>();
