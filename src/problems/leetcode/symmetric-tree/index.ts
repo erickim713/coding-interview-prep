@@ -1,3 +1,5 @@
+import { TreeNode } from "../../../data-structure/tree/treenode";
+
 /**
 
 Given a binary tree, check whether it is a mirror of itself (ie, symmetric around its center).
@@ -42,15 +44,7 @@ const symmetric_tree = (input: TreeNode) => {
   return compare(input, input);
 };
 
-class TreeNode {
-  public val: number;
-  public left: TreeNode;
-  public right: TreeNode;
-  constructor (val: number) {
-    this.left = this.right = null;
-    this.val = val;
-  }
-}
+
 const testCase1 = new TreeNode(1);
 testCase1.left = new TreeNode(2);
 testCase1.right = new TreeNode(2);
