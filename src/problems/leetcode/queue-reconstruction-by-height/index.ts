@@ -15,47 +15,57 @@ const reconstructorQueue = (people: number[][]) => {
   // then do a for loop on the sorted people array and insert it based on the second element which
   // is number of people in front of him or her.
   people = people.sort((a, b) => {
-    return b[0] - a[0];
+    return a[0] - b[0];
   });
 
   //after sorting there must be another sorting by second element sorted by subarrays the smaller values of the second
   //element must come first.
-  let current = people[0][0];
-  let counter = 1;
-  for (let i = 1; i < people.length; i++) {
-    if (current === people[i][0]) {
-      counter++;
+
+  let start = 0,
+    end = 0;
+  let currentFreq;
+
+  for (let i = 0; i < people.length; i++) {
+    if (i === 0) {
+      currentFreq = people[i][0];
     }
 
-    if (people[i + 1] !== undefined && people[i + 1][0] !== current) {
-      let subArray = people.slice(i - counter + 1, i + 1);
-      subArray = subArray.sort((a, b) => {
-        return a[1] - b[1];
+    if (i === people.length - 1 || currentFreq !== people[i][0]) {
+      if (i === people.length - 1) i++;
+      let subArray = people.slice(start, i);
+      subArray.sort((a, b) => {
+        return b[1] - a[1];
       });
-      for (let j = 0; j < counter; j++) {
-        people[i - counter + 1 + j] = subArray[j];
-      }
-      if (people[i + 1] !== undefined) {
-        current = people[i + 1][0];
-        counter = 1;
-        i++;
-      }
-    }
 
-    if (people[i + 1] === undefined) {
-      let subArray = people.slice(i - counter + 1, i + 1);
-      subArray = subArray.sort((a, b) => {
-        return a[1] - b[1];
-      });
-      for (let j = 0; j < counter; j++) {
-        people[i - counter + 1 + j] = subArray[j];
+      if (subArray.length !== 1) people.splice(start, i - start, ...subArray);
+      start = i;
+      end = i;
+      if (i !== people.length) {
+        currentFreq = people[i][0];
       }
+    } else {
+      end++;
     }
   }
 
-  const newArray = new Array();
+  const newArray = new Array(people.length);
   for (let i = 0; i < people.length; i++) {
-    newArray.splice(people[i][1], 0, people[i]);
+    let counter = people[i][1];
+    let index = 0;
+    while (true) {
+      if (newArray[index] === undefined) {
+        if (counter === 0) {
+          break;
+        } else {
+          counter--;
+          index++;
+        }
+      } else {
+        index++;
+      }
+    }
+
+    newArray[index] = people[i];
   }
   return newArray;
 };
@@ -72,5 +82,3 @@ const example = [
   [9, 0],
   [1, 0],
 ];
-
-console.log(reconstructorQueue(example));
